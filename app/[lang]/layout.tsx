@@ -1,12 +1,14 @@
-export default function LangLayout({
+export default async function LangLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
+
   return (
-    <html lang={params.lang}>
+    <html lang={lang}>
       <body>{children}</body>
     </html>
   );
