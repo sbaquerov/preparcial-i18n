@@ -1,7 +1,14 @@
 {
-  "title": "Idioma",
-  "welcome": "Bienvenido",
-  "profile": "Perfil",
-  "goEnglish": "Ir a inglés",
-  "goSpanish": "Ir a español"
+  "home": {
+    "title": "Personajes de Harry Potter",
+    "description": "Explora el universo mágico de Harry Potter."
+  },
+  "detail": {
+    "house": "Casa",
+    "gender": "Género",
+    "wand": "Varita",
+    "wood": "Madera",
+    "core": "Núcleo",
+    "length": "Longitud"
+  }
 }

@@ -1,3 +1,6 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 export default async function LangLayout({
   children,
   params,
@@ -9,7 +12,11 @@ export default async function LangLayout({
 
   return (
     <html lang={lang}>
-      <body>{children}</body>
+      <body>
+        <Header lang={lang} />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

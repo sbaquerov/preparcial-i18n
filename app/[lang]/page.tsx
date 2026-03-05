@@ -1,27 +1,35 @@
-import Link from "next/link";
-import { getDictionary } from "../../dictionaries";
+import { getCharacters } from "../lib/hp";
+import CharacterCard from "../components/CharacterCard";
 
 export default async function Page({
-  params,
+  params
 }: {
-  params: Promise<{ lang: "es" | "en" }>;
+  params: Promise<{ lang: string }>
 }) {
+
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+
+  const characters = await getCharacters();
 
   return (
-    <main style={{ padding: 24 }}>
-      <h1>
-        {dict.title}: {lang}
+    <div>
+
+      <h1 className="text-center text-xl font-bold text-yellow-500 mb-6">
+        Personajes de Harry Potter
       </h1>
 
-      <p>{dict.welcome}</p>
-      <p>{dict.profile}</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
-        <Link href="/es">{dict.goSpanish}</Link>
-        <Link href="/en">{dict.goEnglish}</Link>
+        {characters.map((c: { id: string; name: string; house?: string; image?: string }) => (
+          <CharacterCard
+            key={c.id}
+            character={c}
+            lang={lang}
+          />
+        ))}
+
       </div>
-    </main>
+
+    </div>
   );
 }

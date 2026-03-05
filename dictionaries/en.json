@@ -1,7 +1,14 @@
 {
-  "title": "Language",
-  "welcome": "Welcome",
-  "profile": "Profile",
-  "goEnglish": "Go to English",
-  "goSpanish": "Go to Spanish"
+  "home": {
+    "title": "Harry Potter Characters",
+    "description": "Explore the magical universe of Harry Potter."
+  },
+  "detail": {
+    "house": "House",
+    "gender": "Gender",
+    "wand": "Wand",
+    "wood": "Wood",
+    "core": "Core",
+    "length": "Length"
+  }
 }
