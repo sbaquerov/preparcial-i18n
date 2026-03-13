@@ -1,22 +1,16 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
-export default async function LangLayout({
+export default function LangLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
-
   return (
-    <html lang={lang}>
-      <body>
-        <Header lang={lang} />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-1 bg-gray-100">{children}</main>
+      <Footer />
+    </div>
   );
 }

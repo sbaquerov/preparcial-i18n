@@ -1,48 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type Character = {
-  id: string;
-  name: string;
-  house?: string;
-  image?: string;
-};
-
-const BgColorHouses: Record<string, string> = {
-  Gryffindor: "bg-[#740001]",
-  Slytherin: "bg-[#1A472A]",
-  Ravenclaw: "bg-[#0E1A40]",
-  Hufflepuff: "bg-[#FFD800]",
-  NoHouse: "bg-[#D1D5DB]",
-};
-
-export default function CharacterCard({
-  character,
-  lang,
-}: {
-  character: Character;
-  lang: string;
-}) {
-  const houseKey =
-    character.house && BgColorHouses[character.house]
-      ? character.house
-      : "NoHouse";
+export default function CharacterCard({ character, lang }: any) {
+  const colors: any = {
+    Gryffindor: "bg-[#740001]",
+    Slytherin: "bg-[#1A472A]",
+    Ravenclaw: "bg-[#0E1A40]",
+    Hufflepuff: "bg-[#FFD800]",
+  };
 
   return (
     <Link href={`/${lang}/character/${character.id}`}>
-      <div className="rounded overflow-hidden shadow bg-white">
-        <div className={`${BgColorHouses[houseKey]} text-white text-center p-2`}>
+      <div className="rounded-lg overflow-hidden shadow-lg bg-white">
+        <div
+          className={`text-white text-center py-2 font-bold ${
+            colors[character.house] || "bg-gray-500"
+          }`}
+        >
           {character.name}
         </div>
 
-        <div className="relative w-full h-[250px]">
-          <Image
-            src={character.image || "https://ik.imagekit.io/hpapi/harry.jpg"}
-            alt={character.name}
-            fill
-            className="object-cover"
-          />
-        </div>
+        <Image
+          src={character.image || "/harry.jpg"}
+          alt={character.name}
+          width={300}
+          height={400}
+          className="w-full h-[400px] object-cover"
+        />
       </div>
     </Link>
   );

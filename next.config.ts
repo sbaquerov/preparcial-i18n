@@ -2,10 +2,19 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: [
-      "www.clipartmax.com",
-      "ik.imagekit.io",
-      "hp-api.onrender.com"
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.clipartmax.com",
+      },
+      {
+        protocol: "https",
+        hostname: "hp-api.onrender.com",
+      },
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+      },
     ],
   },
 };
