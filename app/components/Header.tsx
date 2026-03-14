@@ -1,21 +1,29 @@
 import Link from "next/link";
-import Image from "next/image";
 
-export default function Header({ lang }: { lang: string }) {
+export default function Header() {
   return (
-    <header className="bg-[#FDB608] flex flex-col items-center p-4">
-      <Link href={`/${lang}`}>
-        <Image
-          src="https://www.clipartmax.com/png/full/71-713336_harry-potter-logo-harry-potter-logo-png.png"
+    <header
+      style={{
+        background: "#D3A625",
+        padding: "16px 40px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <Link href="/es">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Harry_Potter_wordmark.svg"
           alt="Harry Potter"
-          width={150}
-          height={50}
+          style={{ height: 50, width: "auto" }}
         />
       </Link>
 
-      <div className="flex gap-2 mt-2">
+      <div>
+        <Link href="/es" style={{ marginRight: 10 }}>
+          ES
+        </Link>
         <Link href="/en">EN</Link>
-        <Link href="/es">ES</Link>
       </div>
     </header>
   );
