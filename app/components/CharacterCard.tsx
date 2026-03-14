@@ -3,19 +3,38 @@ import Link from "next/link";
 
 export default function CharacterCard({ character, lang }: any) {
   const colors: any = {
-    Gryffindor: "bg-[#740001]",
-    Slytherin: "bg-[#1A472A]",
-    Ravenclaw: "bg-[#0E1A40]",
-    Hufflepuff: "bg-[#FFD800]",
+    Gryffindor: "#740001",
+    Slytherin: "#1A472A",
+    Ravenclaw: "#0E1A40",
+    Hufflepuff: "#FFD800",
   };
 
   return (
-    <Link href={`/${lang}/character/${character.id}`}>
-      <div className="rounded-lg overflow-hidden shadow-lg bg-white">
+    <Link
+      href={`/${lang}/character/${character.id}`}
+      style={{
+        textDecoration: "none",
+        color: "inherit",
+      }}
+    >
+      <div
+        style={{
+          width: 260,
+          borderRadius: 8,
+          overflow: "hidden",
+          background: "white",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          textAlign: "center",
+        }}
+      >
         <div
-          className={`text-white text-center py-2 font-bold ${
-            colors[character.house] || "bg-gray-500"
-          }`}
+          style={{
+            background: colors[character.house] || "#999",
+            color: character.house === "Hufflepuff" ? "black" : "white",
+            padding: "10px 0",
+            fontWeight: "bold",
+            fontSize: 18,
+          }}
         >
           {character.name}
         </div>
@@ -23,9 +42,11 @@ export default function CharacterCard({ character, lang }: any) {
         <Image
           src={character.image || "/harry.jpg"}
           alt={character.name}
-          width={300}
-          height={400}
-          className="w-full h-[400px] object-cover"
+          width={260}
+          height={360}
+          style={{
+            objectFit: "cover",
+          }}
         />
       </div>
     </Link>

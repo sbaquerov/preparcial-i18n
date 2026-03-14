@@ -30,6 +30,7 @@ export default async function Page({
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           gap: 40,
+          justifyItems: "center",
         }}
       >
         {characters.map((c: any) => (
