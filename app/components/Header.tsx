@@ -5,25 +5,31 @@ export default function Header() {
     <header
       style={{
         background: "#D3A625",
-        padding: "16px 40px",
+        padding: "20px 0",
         display: "flex",
-        justifyContent: "space-between",
+        flexDirection: "column",
         alignItems: "center",
+        gap: 10,
       }}
     >
       <Link href="/es">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Harry_Potter_wordmark.svg"
           alt="Harry Potter"
-          style={{ height: 50, width: "auto" }}
+          style={{
+            height: 50,
+            width: "auto",
+          }}
         />
       </Link>
 
-      <div>
-        <Link href="/es" style={{ marginRight: 10 }}>
+      <div style={{ display: "flex", gap: 10 }}>
+        <Link href="/en" style={{ color: "white", fontWeight: "bold" }}>
+          EN
+        </Link>
+        <Link href="/es" style={{ color: "white", fontWeight: "bold" }}>
           ES
         </Link>
-        <Link href="/en">EN</Link>
       </div>
     </header>
   );
