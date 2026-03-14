@@ -12,27 +12,77 @@ export default async function Page({
   if (!character) return <div>No encontrado</div>;
 
   return (
-    <div className="flex justify-center py-10 bg-gray-200 min-h-screen">
-      <div className="bg-white p-10 rounded-lg shadow-lg w-[600px]">
-        <h1 className="text-3xl font-bold text-yellow-600 text-center mb-6">
-          {character.name}
-        </h1>
+    <div
+      style={{
+        background: "#D9D9D9",
+        minHeight: "100vh",
+        paddingTop: 40,
+        paddingBottom: 60,
+      }}
+    >
+      <h1
+        style={{
+          textAlign: "center",
+          color: "#E7B33C",
+          fontSize: 32,
+          fontWeight: "bold",
+          marginBottom: 40,
+        }}
+      >
+        {character.name}
+      </h1>
 
-        <p><b>Casa:</b> {character.house}</p>
-        <p><b>Género:</b> {character.gender}</p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            width: 700,
+            background: "#fff",
+            borderRadius: 12,
+            border: "3px solid #1F3D2B",
+            overflow: "hidden",
+            boxShadow: "0 10px 20px rgba(0,0,0,0.15)",
+          }}
+        >
+          {/* INFO */}
+          <div
+            style={{
+              flex: 1,
+              padding: 30,
+              background: "#F2F2F2",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              gap: 10,
+              fontSize: 16,
+            }}
+          >
+            <p><b>Casa:</b> {character.house}</p>
+            <p><b>Genero:</b> {character.gender}</p>
+            <p><b>Varita:</b> {character.wand?.core}</p>
+            <p><b>Madera:</b> {character.wand?.wood}</p>
+            <p><b>Longitud:</b> {character.wand?.length}</p>
+          </div>
 
-        <h2 className="mt-4 font-bold">Varita</h2>
-        <p><b>Madera:</b> {character.wand?.wood}</p>
-        <p><b>Núcleo:</b> {character.wand?.core}</p>
-        <p><b>Longitud:</b> {character.wand?.length}</p>
-
-        <div className="mt-6 flex justify-center">
-          <Image
-            src={character.image || "/harry.jpg"}
-            alt={character.name}
-            width={300}
-            height={400}
-          />
+          {/* IMAGE */}
+          <div style={{ flex: 1 }}>
+            <Image
+              src={character.image || "/harry.jpg"}
+              alt={character.name}
+              width={350}
+              height={450}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
