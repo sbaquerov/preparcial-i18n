@@ -10,16 +10,28 @@ export default async function Page({
   const characters = await getCharacters();
 
   return (
-    <div className="p-10 bg-gray-200 min-h-screen">
-      <h1 className="text-center text-4xl font-bold text-yellow-600 mb-2">
+    <div
+      style={{
+        maxWidth: 1100,
+        margin: "0 auto",
+        padding: 40,
+      }}
+    >
+      <h1 style={{ textAlign: "center" }}>
         Personajes de Harry Potter
       </h1>
 
-      <p className="text-center mb-10">
+      <p style={{ textAlign: "center", marginBottom: 40 }}>
         Explora el universo mágico de Harry Potter
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 40,
+        }}
+      >
         {characters.map((c: any) => (
           <CharacterCard key={c.id} character={c} lang={lang} />
         ))}
