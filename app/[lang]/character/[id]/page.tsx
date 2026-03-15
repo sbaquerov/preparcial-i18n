@@ -14,10 +14,12 @@ export default async function Page({
   return (
     <div
       style={{
+        minHeight: "calc(100vh - 220px)", // ← magia real
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
         background: "#D9D9D9",
-        minHeight: "100vh",
-        paddingTop: 40,
-        paddingBottom: 60,
+        paddingBottom: 40,
       }}
     >
       <h1
@@ -32,12 +34,7 @@ export default async function Page({
         {character.name}
       </h1>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div
           style={{
             display: "flex",
@@ -49,7 +46,6 @@ export default async function Page({
             boxShadow: "0 10px 20px rgba(0,0,0,0.15)",
           }}
         >
-          {/* INFO */}
           <div
             style={{
               flex: 1,
@@ -58,7 +54,7 @@ export default async function Page({
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              gap: 10,
+              gap: 14,
               fontSize: 16,
             }}
           >
@@ -69,7 +65,6 @@ export default async function Page({
             <p><b>Longitud:</b> {character.wand?.length}</p>
           </div>
 
-          {/* IMAGE */}
           <div style={{ flex: 1 }}>
             <Image
               src={character.image || "/harry.jpg"}

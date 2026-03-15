@@ -9,7 +9,11 @@ export default function LangLayout({
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 bg-gray-100">{children}</main>
+
+      <main className="flex-1 bg-[#D9D9D9]">
+        {children}
+      </main>
+
       <Footer />
     </div>
   );
