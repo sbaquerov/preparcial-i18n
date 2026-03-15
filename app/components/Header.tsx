@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export default function Header() {
+type Props = {
+  lang: "es" | "en";
+};
+
+export default function Header({ lang }: Props) {
   return (
     <header
       style={{
@@ -12,7 +16,7 @@ export default function Header() {
         gap: 10,
       }}
     >
-      <Link href="/es">
+      <Link href={`/${lang}`}>
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Harry_Potter_wordmark.svg"
           alt="Harry Potter"

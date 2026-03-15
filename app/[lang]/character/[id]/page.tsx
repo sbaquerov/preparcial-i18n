@@ -20,6 +20,30 @@ const translations = {
   },
 };
 
+export async function generateMetadata({ params }: any) {
+  const { id, lang } = params;
+
+  const character = await getCharacterById(id);
+
+  if (!character) {
+    return {
+      title: lang === "es" ? "Personaje no encontrado" : "Character not found",
+      description:
+        lang === "es"
+          ? "El personaje no existe"
+          : "Character does not exist",
+    };
+  }
+
+  return {
+    title: `${character.name} | Harry Potter`,
+    description:
+      lang === "es"
+        ? `Información del personaje ${character.name}`
+        : `Character information about ${character.name}`,
+  };
+}
+
 export default async function Page({
   params,
 }: {
