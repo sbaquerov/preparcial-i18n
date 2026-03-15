@@ -1,4 +1,17 @@
-export default function Footer() {
+const translations = {
+  es: {
+    rights: "© 2026 Harry Potter App. Todos los derechos reservados.",
+    developed: "Desarrollado para: ISIS3710",
+  },
+  en: {
+    rights: "© 2026 Harry Potter App. All rights reserved.",
+    developed: "Developed for: ISIS3710",
+  },
+};
+
+export default function Footer({ lang }: { lang: "es" | "en" }) {
+  const t = translations[lang];
+
   return (
     <footer
       style={{
@@ -11,8 +24,8 @@ export default function Footer() {
         fontWeight: 500,
       }}
     >
-      <div>© 2026 Harry Potter App. Todos los derechos reservados.</div>
-      <div>Desarrollado para: ISIS3710</div>
+      <div>{t.rights}</div>
+      <div>{t.developed}</div>
     </footer>
   );
 }
