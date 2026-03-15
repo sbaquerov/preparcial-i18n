@@ -1,12 +1,27 @@
 import { getCharacters } from "@/app/lib/hp";
 import CharacterCard from "@/app/components/CharacterCard";
 
+const translations = {
+  es: {
+    title: "Personajes de Harry Potter",
+    subtitle:
+      "Explora el universo mágico de Harry Potter: un listado completo de personajes con su casa, especie y datos principales.",
+  },
+  en: {
+    title: "Harry Potter Characters",
+    subtitle:
+      "Explore the magical universe of Harry Potter: a complete list of characters with their house, species and main details.",
+  },
+};
+
 export default async function Page({
   params,
 }: {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: "es" | "en" }>;
 }) {
   const { lang } = await params;
+  const t = translations[lang];
+
   const characters = await getCharacters();
 
   return (
@@ -25,7 +40,6 @@ export default async function Page({
           padding: 40,
         }}
       >
-
         <h1
           style={{
             textAlign: "center",
@@ -35,7 +49,7 @@ export default async function Page({
             marginBottom: 8,
           }}
         >
-          Personajes de Harry Potter
+          {t.title}
         </h1>
 
         <p
@@ -47,7 +61,7 @@ export default async function Page({
             lineHeight: 1.4,
           }}
         >
-          Explora el universo mágico de Harry Potter: un listado completo de personajes con su casa, especie y datos principales.
+          {t.subtitle}
         </p>
 
         <div
