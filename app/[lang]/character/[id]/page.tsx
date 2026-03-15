@@ -1,20 +1,41 @@
 import Image from "next/image";
 import { getCharacterById } from "../../../lib/hp";
 
+const translations = {
+  es: {
+    house: "Casa",
+    gender: "Género",
+    wand: "Varita",
+    wood: "Madera",
+    length: "Longitud",
+    notFound: "No encontrado",
+  },
+  en: {
+    house: "House",
+    gender: "Gender",
+    wand: "Wand",
+    wood: "Wood",
+    length: "Length",
+    notFound: "Not found",
+  },
+};
+
 export default async function Page({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; lang: "es" | "en" }>;
 }) {
-  const { id } = await params;
+  const { id, lang } = await params;
+
+  const t = translations[lang];
   const character = await getCharacterById(id);
 
-  if (!character) return <div>No encontrado</div>;
+  if (!character) return <div>{t.notFound}</div>;
 
   return (
     <div
       style={{
-        minHeight: "calc(100vh - 220px)", // ← magia real
+        minHeight: "calc(100vh - 220px)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -58,11 +79,11 @@ export default async function Page({
               fontSize: 16,
             }}
           >
-            <p><b>Casa:</b> {character.house}</p>
-            <p><b>Genero:</b> {character.gender}</p>
-            <p><b>Varita:</b> {character.wand?.core}</p>
-            <p><b>Madera:</b> {character.wand?.wood}</p>
-            <p><b>Longitud:</b> {character.wand?.length}</p>
+            <p><b>{t.house}:</b> {character.house}</p>
+            <p><b>{t.gender}:</b> {character.gender}</p>
+            <p><b>{t.wand}:</b> {character.wand?.core}</p>
+            <p><b>{t.wood}:</b> {character.wand?.wood}</p>
+            <p><b>{t.length}:</b> {character.wand?.length}</p>
           </div>
 
           <div style={{ flex: 1 }}>
