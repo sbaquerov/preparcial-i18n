@@ -1,16 +1,20 @@
-const translations = {
-  es: {
-    rights: "© 2026 Harry Potter App. Todos los derechos reservados.",
-    developed: "Desarrollado para: ISIS3710",
-  },
-  en: {
-    rights: "© 2026 Harry Potter App. All rights reserved.",
-    developed: "Developed for: ISIS3710",
-  },
+type Props = {
+  lang: "es" | "en";
 };
 
-export default function Footer({ lang }: { lang: "es" | "en" }) {
-  const t = translations[lang];
+export default function Footer({ lang }: Props) {
+  const text = {
+    es: {
+      rights: "© 2026 Harry Potter App. Todos los derechos reservados.",
+      dev: "Desarrollado para: ISIS3710",
+    },
+    en: {
+      rights: "© 2026 Harry Potter App. All rights reserved.",
+      dev: "Developed for: ISIS3710",
+    },
+  };
+
+  const t = text[lang];
 
   return (
     <footer
@@ -19,13 +23,11 @@ export default function Footer({ lang }: { lang: "es" | "en" }) {
         padding: "12px 40px",
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center",
         fontSize: 14,
-        fontWeight: 500,
       }}
     >
       <div>{t.rights}</div>
-      <div>{t.developed}</div>
+      <div>{t.dev}</div>
     </footer>
   );
 }

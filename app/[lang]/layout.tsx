@@ -6,19 +6,21 @@ export default async function LangLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: "es" | "en" }>;
+  params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
 
+  const safeLang = lang as "es" | "en";
+
   return (
     <div className="flex flex-col min-h-screen">
-      <Header lang={lang} />
+      <Header lang={safeLang} />
 
       <main className="flex-1 bg-[#D9D9D9]">
         {children}
       </main>
 
-      <Footer lang={lang} />
+      <Footer lang={safeLang} />
     </div>
   );
 }
